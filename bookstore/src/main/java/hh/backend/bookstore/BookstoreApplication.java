@@ -23,15 +23,22 @@ public class BookstoreApplication {
 				"Testikirja",
 				"A. Kirjailija",
 				2000,
-				"1298374326",
-				19.90
+				"12983-74326",
+				19.95
 			));
 			bookRepository.save(new Book(
 				"Testikirjan paluu",
 				"A. Kirjailija",
 				2002,
-				"1298398779",
-				29.90
+				"12983-98779",
+				29.95
+			));
+			bookRepository.save(new Book(
+				"Opi koodaamaan",
+				"B. End",
+				2018,
+				"12983-95433",
+				35.00
 			));
 		};
 
