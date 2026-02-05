@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import hh.backend.bookstore.domain.Book;
 import hh.backend.bookstore.domain.BookRepository;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -54,6 +53,14 @@ public class BookController {
     public String save(Book book) {
         bookRepository.save(book);
         return "redirect:booklist";
+    }
+
+    // edit book
+    @GetMapping("/edit/{bookId}")
+    public String editBook(@PathVariable("bookId") Long bookId, Model model) {
+        Book book = bookRepository.findById(bookId).get();
+        model.addAttribute("book", book);
+        return "editbook"; // editbook.html
     }
 
 
