@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 
 import hh.backend.bookstore.domain.Book;
 import hh.backend.bookstore.domain.BookRepository;
+import hh.backend.bookstore.domain.Category;
+import hh.backend.bookstore.domain.CategoryRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -16,9 +18,15 @@ public class BookstoreApplication {
 	}
 
 	@Bean
-	public CommandLineRunner createBookRows(BookRepository bookRepository) {
+	public CommandLineRunner createBookRows(CategoryRepository categoryRepository, BookRepository bookRepository) {
 
 		return (args) -> {
+			categoryRepository.save(new Category("Sci-Fi"));
+            categoryRepository.save(new Category("Fantasy"));
+            categoryRepository.save(new Category("Thriller"));
+            categoryRepository.save(new Category("Science"));
+
+
 			bookRepository.save(new Book(
 				"Testikirja",
 				"A. Kirjailija",
