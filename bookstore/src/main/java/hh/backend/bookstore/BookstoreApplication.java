@@ -30,9 +30,6 @@ public class BookstoreApplication {
 				System.out.println(c.toString());
 			}
 
-
-
-
 			bookRepository.save(new Book(
 				"Testikirja",
 				"A. Kirjailija",
