@@ -26,6 +26,12 @@ public class BookstoreApplication {
             categoryRepository.save(new Category("Thriller"));
             categoryRepository.save(new Category("Science"));
 
+			for (Category c : categoryRepository.findAll()) {
+				System.out.println(c.toString());
+			}
+
+
+
 
 			bookRepository.save(new Book(
 				"Testikirja",
