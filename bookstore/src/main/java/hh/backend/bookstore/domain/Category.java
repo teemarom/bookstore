@@ -1,9 +1,13 @@
 package hh.backend.bookstore.domain;
 
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity // tietokannan taulun määrittely
 public class Category {
@@ -13,6 +17,10 @@ public class Category {
 
     private Long categoryId;
     private String name;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
+    private List<Book> books;
+    
 
     public Category() {
     }
@@ -25,9 +33,14 @@ public class Category {
     public Long getCategoryId() {
         return categoryId;
     }
-
+    
     public String getName() {
         return name;
+    }
+    
+    @OneToMany
+    public List<Book> getBooks() {
+        return books;
     }
 
     // setterit
@@ -39,10 +52,17 @@ public class Category {
         this.name = name;
     }
 
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
+
     @Override
     public String toString() {
         return "Category [categoryId=" + categoryId + ", name=" + name + "]";
     }
+
+ 
+
 
     
     

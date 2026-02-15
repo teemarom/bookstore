@@ -21,11 +21,12 @@ public class BookstoreApplication {
 	public CommandLineRunner createBookRows(CategoryRepository categoryRepository, BookRepository bookRepository) {
 
 		return (args) -> {
-			categoryRepository.save(new Category("Sci-Fi"));
-            categoryRepository.save(new Category("Fantasy"));
-            categoryRepository.save(new Category("Thriller"));
-            categoryRepository.save(new Category("Science"));
+			Category scifi = categoryRepository.save(new Category("Sci-Fi"));
+			Category fantasy = categoryRepository.save(new Category("Fantasy"));
+			Category thriller = categoryRepository.save(new Category("Thriller"));
+			Category science = categoryRepository.save(new Category("Science"));
 
+			// kategorioden tulostus
 			for (Category c : categoryRepository.findAll()) {
 				System.out.println(c.toString());
 			}
@@ -35,21 +36,24 @@ public class BookstoreApplication {
 				"A. Kirjailija",
 				2000,
 				"12983-74326",
-				19.95
+				19.95,
+				scifi
 			));
 			bookRepository.save(new Book(
 				"Testikirjan paluu",
 				"A. Kirjailija",
 				2002,
 				"12983-98779",
-				29.95
+				29.95,
+				scifi
 			));
 			bookRepository.save(new Book(
 				"Opi koodaamaan",
 				"B. End",
 				2018,
 				"12983-95433",
-				35.00
+				35.00,
+				science
 			));
 		};
 
