@@ -10,7 +10,7 @@
     <div>
         <form th:object="${category}" th:action="@{/savecategory}" action="#" method="post">
             <label>Category</label>
-            <input type="text" id="category" th:field="*{name}">
+            <input type="text" id="category" th:field="*{name}"><br>
             <input type="submit" value="Save">
         </form>
     </div>

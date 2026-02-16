@@ -1,5 +1,5 @@
 package hh.backend.bookstore.web;
-
+import hh.backend.bookstore.domain.CategoryRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +13,15 @@ import hh.backend.bookstore.domain.BookRepository;
 @Controller
 public class BookController {
 
+    private final CategoryRepository categoryRepository;
+
     // annotaatio injektio
     private BookRepository bookRepository;
 
     //konstruktori-injektio
-    public BookController(BookRepository repository) {
+    public BookController(BookRepository repository, CategoryRepository categoryRepository) {
         this.bookRepository = repository;
+        this.categoryRepository = categoryRepository;
     }
 
     // index
@@ -45,6 +48,7 @@ public class BookController {
     @GetMapping("/addbook")
     public String addBook(Model model) {
         model.addAttribute("book", new Book());
+        model.addAttribute("categories", categoryRepository.findAll()); // categoriat dropdown
         return "addbook"; // addbook.html
     }
     
@@ -60,6 +64,7 @@ public class BookController {
     public String editBook(@PathVariable("bookId") Long bookId, Model model) {
         Book book = bookRepository.findById(bookId).get();
         model.addAttribute("book", book);
+        model.addAttribute("categories", categoryRepository.findAll()); // categoriat dropdown
         return "editbook"; // editbook.html
     }
 
