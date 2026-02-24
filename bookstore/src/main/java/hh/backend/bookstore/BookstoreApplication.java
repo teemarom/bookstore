@@ -1,5 +1,6 @@
 package hh.backend.bookstore;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,6 +14,8 @@ import hh.backend.bookstore.domain.CategoryRepository;
 @SpringBootApplication
 public class BookstoreApplication {
 
+	// private static final Logger log = LoggerFactory.getLogger(BookstoreApplication.class); 
+
 	public static void main(String[] args) {
 		SpringApplication.run(BookstoreApplication.class, args);
 	}
@@ -21,12 +24,14 @@ public class BookstoreApplication {
 	public CommandLineRunner createBookRows(CategoryRepository categoryRepository, BookRepository bookRepository) {
 
 		return (args) -> {
+			// log.info("Save some categories");
 			Category scifi = categoryRepository.save(new Category("Sci-Fi"));
 			Category fantasy = categoryRepository.save(new Category("Fantasy"));
 			Category thriller = categoryRepository.save(new Category("Thriller"));
 			Category science = categoryRepository.save(new Category("Science"));
 
 			// kategorioden tulostus
+			// log.info("Fetch all the categories")
 			for (Category c : categoryRepository.findAll()) {
 				System.out.println(c.toString());
 			}
