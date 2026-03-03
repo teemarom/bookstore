@@ -28,9 +28,10 @@ public class WebSecurityConfig {
             .anyRequest().authenticated()
         )
         .formLogin(formlogin -> formlogin
-            .loginPage("/")
+            .loginPage("/login")
             .loginProcessingUrl("/login")
             .defaultSuccessUrl("/booklist", true)
+            .failureUrl("/login?error=true") 
             .permitAll()
         )
         .logout(logout -> logout

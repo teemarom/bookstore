@@ -9,9 +9,9 @@
     <h1>Add Category</h1>
     <div>
         <form th:object="${category}" th:action="@{/savecategory}" action="#" method="post">
-            <label>Category</label>
+            <label>Add New Category: </label>
             <input type="text" id="category" th:field="*{name}"><br>
-            <input type="submit" value="Save">
+            <input type="submit" value="Add Category">
         </form>
     </div>
     
