@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import hh.backend.bookstore.domain.Book;
 import hh.backend.bookstore.domain.BookRepository;
@@ -66,6 +67,12 @@ public class BookController {
         model.addAttribute("book", book);
         model.addAttribute("categories", categoryRepository.findAll()); // categoriat dropdown
         return "editbook"; // editbook.html
+    }
+
+    // log in
+    @RequestMapping(value="/login")
+    public String login() {
+        return "login";
     }
 
 
