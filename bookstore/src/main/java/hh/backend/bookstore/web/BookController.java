@@ -1,5 +1,7 @@
 package hh.backend.bookstore.web;
 import hh.backend.bookstore.domain.CategoryRepository;
+
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,9 +42,10 @@ public class BookController {
 
     // delete book
     @GetMapping("/delete/{bookId}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String deleteBook(@PathVariable("bookId") Long bookId, Model model) {
         bookRepository.deleteById(bookId);
-        return "redirect:../booklist"; // uudelleenohjaa booklist.html
+        return "redirect:../booklist"; // uudelleenohjaa booklist.html endpointttin
     }
 
     // add new book
