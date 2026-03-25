@@ -56,6 +56,10 @@ public class AppUser {
         return role;
     }
 
+    public Long getId() {
+        return id;
+    }
+
     // setterit
     public void setUsername(String username) {
         this.username = username;
